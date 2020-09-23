@@ -49,7 +49,7 @@ int main() {
         }
 
         for (int i = 0; i < 4; i++) {
-            std::cout << "wheel at index " << i << " has speed " << wheel_speeds[i] << ".\n";
+            std::cout << "wheel at index " << i << " has speed " << wheel_speeds[i] << "\n";
         }
 
     }
