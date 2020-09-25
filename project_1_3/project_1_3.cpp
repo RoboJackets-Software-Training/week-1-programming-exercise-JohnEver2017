@@ -37,9 +37,41 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
+  std::cout << "x: {" << x[0];
+  for (int i = 1; i < x.size(); i++) {
+    std::cout << ", " << x[i];
+  }
+  std::cout << "}\n";
 
+  std::cout << "w: {" << w[0];
+  for (int i = 1; i < w.size(); i++) {
+    std::cout << ", " << w[i];
+  }
+  std::cout << "}\n";
 
+  int packing_size = (w.size() - 1) / 2;
 
+  for (int i = 0; i < x.size(); i++) {
+    double accumulator = 0;
+
+    for (int j = 0; j < w.size(); j++) {
+      if (i - packing_size + j >= 0 && i - packing_size + j < x.size()) {
+        accumulator += x[i - packing_size + j] * w[j];
+      } else if (!pack_with_zeros && i - packing_size + j < 0) {
+        accumulator += x[0] * w[j];
+      } else if (!pack_with_zeros && i - packing_size + j >= x.size()) {
+        accumulator += x[x.size() - 1] * w[j];
+      }
+    }
+
+    y.push_back(accumulator);
+  }
+
+  std::cout << "{" << y[0];
+  for (int i = 1; i < y.size(); i++) {
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}\n";
 
   // =========== END ===========
 
